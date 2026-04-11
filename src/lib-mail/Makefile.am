@@ -127,7 +127,8 @@ if USE_FUZZER
 fuzz_programs += fuzz-message-parser \
 		 fuzz-qp-decoder \
 		 fuzz-message-date \
-		 fuzz-message-decoder
+		 fuzz-message-decoder \
+		 fuzz-message-address
 
 nodist_EXTRA_fuzz_message_parser_SOURCES = force-cxx-linking.cxx
 
@@ -160,6 +161,14 @@ fuzz_message_decoder_LDFLAGS = $(FUZZER_LDFLAGS)
 fuzz_message_decoder_SOURCES = fuzz-message-decoder.c
 fuzz_message_decoder_LDADD = $(test_libs)
 fuzz_message_decoder_DEPENDENCIES = $(test_deps)
+
+nodist_EXTRA_fuzz_message_address_SOURCES = force-cxx-linking.cxx
+
+fuzz_message_address_CPPFLAGS = $(FUZZER_CPPFLAGS)
+fuzz_message_address_LDFLAGS = $(FUZZER_LDFLAGS)
+fuzz_message_address_SOURCES = fuzz-message-address.c
+fuzz_message_address_LDADD = $(test_libs)
+fuzz_message_address_DEPENDENCIES = $(test_deps)
 
 endif
 
